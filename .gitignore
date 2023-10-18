@@ -2,10 +2,10 @@
 bin-debug/
 bin-release/
 files/
-application/config/config.php
-application/config/database.php
-wp-content/uploads
-assets/uploads
+# application/config/config.php
+# application/config/database.php
+# wp-content/uploads
+# assets/uploads
 
 [Oo]bj/
 [Bb]in/
