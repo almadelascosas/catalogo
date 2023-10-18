@@ -1,0 +1,1 @@
+[27-Apr-2022 22:21:10 UTC] PHP Warning:  file_get_contents(contents.html): failed to open stream: No such file or directory in /home/pexijfub/public_html/PHPMailer/example.php on line 27

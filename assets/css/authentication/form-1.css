@@ -1,0 +1,90 @@
+html{
+    height: 100%;
+}
+body.form{
+    height: 100%;
+}
+
+.primary-color{
+    color: #f5b228;
+}
+.primary-bg{
+    background-color: #f5b228;
+}
+
+.caja-login {
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f1f1f1;
+}
+.controls{
+    width: 100%;
+    text-align:center;
+}
+.controls a {
+    display: inline-block;
+    padding: 10px !important;
+    background: none;
+    font-family: Karla, sans-serif;
+    width: 49%;
+    font-size: 24px !important;
+    line-height: 30px !important;
+    transition: all .2s;
+    color: #aaaaaa;
+    text-decoration: none;
+    font-weight: 600;
+}
+.controls a.active {
+    color: #f5b228 !important;
+}
+.controls a:hover {
+    color: #f5b228 !important;
+}
+.form-login label{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #333333;
+    font-size: 12px;
+    text-align: center;
+}
+.form-login input{
+    padding: 15px;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    color: #666666;
+    background-color: #f6f6f6;
+    box-shadow: none;
+    border-radius: 6px;
+    border: solid 1px #ccc;
+    width: 100%;
+}
+.btn-default{
+    background-color: #f5b228;
+    box-shadow: 0 0 0 3px #f5b228;
+    cursor: pointer;
+    font-size: 13px;
+    color: #ffffff;
+    padding: 11px 20px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: 2px dashed #ffffff;
+    -webkit-transition: all .6s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all .6s cubic-bezier(0.77, 0, 0.175, 1);
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 2em;
+    outline: none;
+    text-decoration: none;
+}
+.btn-default:hover{
+    background-color: #444444 !important;
+    box-shadow: 0 0 0 3px #444444;
+    color: #fff;
+}

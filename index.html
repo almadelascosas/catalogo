@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.: En Construcción :.</title>
+    <style>
+        html{
+            height: 100%;
+            width: 100%;
+        }
+        body {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+            background: linear-gradient(45deg, #f5b228, transparent);
+        }
+        h1{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-family: sans-serif;
+        }
+        .in_desktop{
+            height: 100%;
+            margin: auto;
+            max-width: 100%;
+        }
+        .in_mobile {
+            height: auto;
+            margin: auto;
+            max-width: 100%;
+            width: 100%;
+            top: 50%;
+            position: absolute;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        @media (max-width:767px) {
+            .in_desktop{
+                display: none;
+            }
+        }
+        @media (min-width:768px) {
+            .in_mobile{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img class="in_desktop" src="banner-construccion-desktop.jpg" alt="banner-construccion-desktop">
+    <img class="in_mobile" src="banner-construccion.jpg" alt="banner-construccion">
+</body>
+</html>

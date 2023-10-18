@@ -1,0 +1,8 @@
+@media (max-width: 767px){
+    .banner-ubicacion-mobile {
+        display: none!important;
+    }
+    .cuerpo{
+        margin-top: 20px!important;
+    }
+}

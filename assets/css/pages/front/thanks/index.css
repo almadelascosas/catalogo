@@ -1,0 +1,27 @@
+.banner-ubicacion-mobile {
+    display: none!important;
+}
+.cuerpo {
+    margin-top: 12px!important;
+    background: #FAFAFA;
+    text-align: center;
+    margin-bottom: 100px;
+}
+[class^="thanks-"], [class*="thanks-"] {
+    padding-top: 157px;
+    padding-bottom: 107px;
+}
+[class^="thanks-"] h4, [class*="thanks-"] h4{
+    font-family: Lora;
+    font-weight: 600;
+    color: #5F5F5F;
+}
+[class^="thanks-"] p, [class*="thanks-"] p{
+    color: #868686;
+}
+
+@media (max-width: 767px){
+    .cuerpo{
+        margin-top: 20px!important;
+    }
+}

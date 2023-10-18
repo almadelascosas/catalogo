@@ -1,0 +1,14 @@
+{
+    "license": "MIT",
+    "description": "Lyra  REST api PHP code samples",
+    "keywords": ["Lyra", "php", "sdk", "creditcard", "payment"],
+    "require": {
+        "php": ">=5.4.0",
+        "lyracom/rest-php-sdk": "4.0.*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": { "": "src/" }
+    }
+}

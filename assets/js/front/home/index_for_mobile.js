@@ -1,0 +1,25 @@
+$('.carousel-productos').owlCarousel({
+    loop:false,
+    dots:false,
+    margin:10,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:2,
+            nav:true
+        }
+    }
+})
+$('.carousel-banner').owlCarousel({
+    loop:false,
+    autoplay:true,
+    dots:false,
+    margin:10,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:false
+        }
+    }
+})

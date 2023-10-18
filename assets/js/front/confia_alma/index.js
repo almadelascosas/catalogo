@@ -1,0 +1,18 @@
+$('.carrusel-confia').owlCarousel({
+    loop:true,
+    dots:true,
+    margin:10,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            autoplay:true,
+            autoplayTimeout:4000,
+            nav:false
+        },
+        767:{
+            items:3,
+            nav:false
+        }
+    }
+})

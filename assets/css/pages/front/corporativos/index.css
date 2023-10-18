@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
+
+#btn-whatsapp{
+    display: none!important;
+}
+body{
+    background-color: #FAFAFA;
+}
+.bg-green-corporativos{
+    background-color: #231B71; 
+}
+.btn-whatsapp-header {
+    background-color: #1FD161;
+    box-shadow: 0px 10px 24px #1fd16180;
+    color: #fff;
+    border: none;
+    border-radius: 44px;
+    padding: 10px 30px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.titulo-header-corp{
+    float: left;
+    width: calc(100% - 125px);
+    padding-left: 20px;
+    border-left: solid 2px #fff;
+    height: 100%;
+    display: table;
+}
+.titulo-header-corp p{
+    font-family: 'Karla';
+    font-weight: 400;
+    font-size: 20px;
+}
+.titulo-header-corp strong{
+    font-family: "Lora";
+    font-weight: 600;
+}
+.logo {
+    float: left;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.logo img {
+    max-width: 80px;
+    margin: auto;
+}
+
+.banner-principal{
+    min-height: 300px;
+}
+section{
+    margin-bottom: 50px;
+}
+h2{
+    color: #808080;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Lora';
+}
+p{
+    font-size: 16px;
+    color: #707070;
+}
+.item-regalos {
+    background-color: #7343E7;
+    color: #fff;
+    box-shadow: 0px 10px 20px #2858586e;
+    width: 100%;
+    display: block;
+    float: left;
+    height: 100%;
+    border-radius: 19px;
+}
+.icono-reg{
+    width: 160px;
+    padding: 15px;
+    float: left;
+    height: 100%;
+}
+.text-reg{
+    width: calc(100% - 160px);
+    float: left;
+    height: 100%;
+    display: table;
+}
+.item-regalos h3{
+    font-size: 20px;
+    color: #fff;
+    font-family: "Lora";
+    font-weight: 700;
+    display: table-cell;
+    vertical-align: middle;    
+}
+.sc-services-detail {
+    box-shadow: 0px 8px 24px #7090b026;
+    border-radius: 15px;
+    padding: 30px;
+}
+.card-detail {
+    height: 100%;
+}
+.card-detail .icono{
+    width: 80px;
+    float: left;
+    height: 100%;
+    display: table;
+}
+.card-detail .icono .image{
+    box-shadow: 0px 8px 24px #7090B026;
+    border-radius: 12px;
+    width: 80px;
+    height: 80px;
+    padding: 14px;
+}
+.card-detail .text{
+    width: calc(100% - 80px);
+    float: left;
+    /*display: table;*/
+    height: 100%;
+    padding: 15px;
+}
+.owl-stage{
+    display: flex;
+    align-items: center;
+}
+.owl-carousel .item {
+    height: auto;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+}
+.owl-carousel .item img.icono-cliente {
+    width: 85%!important;
+    margin: auto;
+}
+
+
+.contact-form{
+    box-shadow: 0px 8px 24px #7090B026;
+    border-radius: 15px;
+}
+.contact-form .paper-plane{
+    position: absolute;
+    top: 45%;
+    left: -100%;
+    transform: translateY(-50%);
+    width: 200%;
+    max-width: 200%;
+}
+.contact-form h4 {
+    color: #5F5F5F;
+    font-family: "Lora";
+    font-weight: 600;
+    font-size: 24px;
+}
+.contact-form label {
+    font-family: "Karla";
+    font-weight: 600;
+    color: #868686;
+}
+.contact-form input, .contact-form textarea{
+    background-color: #e5e5e5;
+    border-radius: 21px;
+    border: none;
+}
+.btn-contact {
+    background-color: #F5B228;
+    box-shadow: 0px 10px 24px #f5b22880;
+    border-radius: 30px;
+    color: #fff;
+    width: 100%;
+    max-width: 378px;
+    padding: 16px;
+    font-family: "Karla";
+    font-size: 20px;
+}
+
+h2.titulo_corporativo{
+  color: #6D6D6D;
+  font-weight: bold;
+  font-size: 1.5em;
+  font-family: 'Raleway', sans-serif;
+}
+.txttrans{
+  color: #959393;
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif !important;
+  text-align: justify;
+  line-height: 22px;
+  padding: 18px 0;
+}
+
+
+/* MOBILE */
+
+@media (max-width:767px) {
+    .logo {
+        float: left;
+        margin: auto;
+        padding-left: 0px;
+        padding-right: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .logo img {
+        max-width: 50px;
+        margin: auto;
+    }
+    .titulo-header-corp {
+        float: left;
+        width: calc(100% - 125px);
+        padding-left: 10px;
+        border-left: solid 2px #fff;
+        height: 100%;
+        display: table;
+    }
+    .titulo-header-corp p {
+        font-family: 'Karla';
+        font-weight: 400;
+        font-size: 15px;
+    }
+    .banner-principal{
+        min-height: 200px;
+    }
+    h2 {
+        color: #808080;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: 'Lora';
+    }
+    section {
+        margin-bottom: 40px;
+    }
+    .sc-services-detail {
+        box-shadow: none;
+        border-radius: 15px;
+        padding: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .contact-form .paper-plane {
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 224px;
+        margin-top: -112px;
+    }
+    .contact-form {
+        box-shadow: 0px 8px 24px #7090b026;
+        border-radius: 15px;
+        width: 94%!important;
+        flex: 0 0 90%!important;
+        margin-left: 5%;
+        margin-top: 112px;
+    }
+    .contact-form h4 {
+        color: #5F5F5F;
+        font-family: "Lora";
+        font-weight: 600;
+        font-size: 20px;
+        text-align: center;
+    }
+    .contact-form p {
+        text-align: center;
+    }
+    .btn-contact{
+        padding: 10px;
+    }
+    .icono-reg {
+        width: 115px;
+        padding: 15px;
+        float: left;
+        height: 100%;
+    }
+    .text-reg {
+        width: calc(100% - 120px);
+        float: left;
+        height: 100%;
+        display: table;
+    }
+    
+    .item-regalos h3 {
+        font-size: 18px;
+        color: #fff;
+        font-family: "Lora";
+        font-weight: 700;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .owl-carousel .item {
+        padding: 15px;
+        position: relative;
+        height: auto;
+    }
+    .owl-carousel .item img.icono-cliente {
+        margin: auto;
+        margin-bottom: 30px;
+    }
+    .btn-whatsapp-header{
+        padding: 10px 20px;
+    }
+    h2.titulo_corporativo{
+        color: #6D6D6D;
+        font-weight: bold;
+        font-size: 1.2em !important;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .txttrans{
+      color: #959393;
+      font-size: 18px;
+      font-family: 'Raleway', sans-serif !important;
+      text-align: justify;
+      line-height: 28px;
+      padding: 24px 0;
+    }
+}
+@media (min-width:768px) and (max-width:1260px) {
+    .icono-reg {
+        width: 100%;
+        padding: 15px;
+        float: left;
+        height: 210px;
+        display: table;
+        text-align: center;
+    }
+    .text-reg {
+        width: 100%;
+        float: left;
+        height: 70px;
+        display: table;
+        padding: 0px 10px;
+        text-align: center;
+    }
+    .card-detail .icono {
+        width: 100%;
+        float: left;
+        height: auto;
+        display: table;
+        text-align: center;
+    }
+    .card-detail .icono .image {
+        box-shadow: 0px 8px 24px #7090b026;
+        border-radius: 12px;
+        width: 80px;
+        height: 80px;
+        padding: 14px;
+        margin: auto;
+    }
+    .card-detail .text {
+        width: 100%;
+        float: left;
+        display: table;
+        padding: 15px;
+        text-align: center;
+        height: auto;
+    }
+}
+
+.boton-ws {
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #fff;
+    z-index: 9999;
+}
+
+/* YEPAGU */
+
+
+.contador{
+  padding: 10px 0;
+}
+
+#countdown {
+  font-family: 'Raleway', sans-serif !important;
+  width: 200px;
+  height: 100px;
+  margin-top: 0px;
+  color: #6D6D6D;
+  font-size: 5em;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  .opacity(1.0);
+  .transition(opacity 0.4s ease);
+  /* solve for flicker problem */
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;    
+} 
+
+#countdown.puffer {
+  .opacity(0);
+  .transform(scale(1.6,1.6));
+  .transition(all 0.4s ease-out);
+}

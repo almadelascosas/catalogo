@@ -1,0 +1,25 @@
+<soapenv:Envelope>
+    <soapenv:Header />
+    <soapenv:Body>
+        <ser:Guias_generarGuia>
+            <p>
+               
+               <id_cliente>XX-IDCLIENTE-XX</id_cliente>
+               
+                XX-PRINCIPAL-XX
+                
+                <detalle>
+                    XX-DETALLE-XX
+                </detalle>
+
+                <margen_izquierdo>0</margen_izquierdo>
+                <margen_superior>0</margen_superior>
+
+                
+                <usuario>XX-USERNAME-XX</usuario>
+                <clave>XX-CLAVE-XX</clave>
+                
+            </p>
+        </ser:Guias_generarGuia>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<soapenv:Envelope>
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ser:Guias_generarGuia>
+            <p>
+               
+               <id_cliente>41139</id_cliente>
+               
+                
+<fecha/>
+<nit_remitente/>
+<nombre_remitente>Alma de las cosas CA</nombre_remitente>
+<direccion_remitente/>
+<telefono_remitente/>
+<ciudad_remitente>05001000</ciudad_remitente>
+<nit_destinatario>1037661048</nit_destinatario>
+<nombre_destinatario>Tom&#xE1;s Gonz&#xE1;lez Restrepo</nombre_destinatario>
+<direccion_destinatario>Carrera 30 # 72 sur 02  Casa 3  Rinc&#xF3;n de la doctora</direccion_destinatario>
+<telefono_destinatario>3218614517</telefono_destinatario>
+<ciudad_destinatario>73001000</ciudad_destinatario>
+<valor_declarado>45000</valor_declarado>
+<codigo_producto>0</codigo_producto>
+<nivel_servicio>1</nivel_servicio>
+<contenido>ARTICULO DE HOGAR</contenido>
+<observaciones>Tiquetera de bonos redimibles</observaciones>
+<estado>IMPRESO</estado>
+
+                
+                <detalle>
+                    <item>
+<ubl>0</ubl>
+<alto/>
+<ancho/>
+<largo/>
+<peso>1</peso>
+<unidades>1</unidades>
+<nombre_empaque/>
+</item>
+                </detalle>
+
+                <margen_izquierdo>0</margen_izquierdo>
+                <margen_superior>0</margen_superior>
+
+                
+                <usuario>almadecolombia.ws</usuario>
+                <clave>8d9a02d7d9badbd493e0bb4fdf4dc3e9d85db02af1e0716c2a14e6fe3daacf95</clave>
+                
+            </p>
+        </ser:Guias_generarGuia>
+    </soapenv:Body>
+</soapenv:Envelope>
