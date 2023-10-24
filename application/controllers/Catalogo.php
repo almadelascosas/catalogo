@@ -1,57 +1,22 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(APPPATH.'core/MY_LoggedController.php');
-class Panel extends MY_LoggedController
+
+class Catalogo extends MY_LoggedController
 {
     public function __construct()
     {
-        parent::__construct('panel');
-        ini_set('display_errors', 0);
+        parent::__construct('catalogo');
         $this->load->helper(array('commun'));
-        $this->load->model("pedidos_model");
-        $this->load->model("productos_model");
-        $this->load->model("mailing_model");
-
+        $this->load->model("catalogo_model", "mdCata");
     }
 
     public function index()
     {
       $datos = [
-        'view' => 'dashboard/index',
-        'css_data' => ['assets/plugins/snackbar/snackbar.min.css'],
-        'js_data' => [ 'assets/plugins/snackbar/snackbar.min.js' ],
-        'menu_dash' => obtenerMenuDash()
+        'view' => 'catalogo/index',
+        'catalogos' => $this->mdCata->ultimos()
       ];
-
-      $parametros = array(
-        "tipo_consulta" => "pedidos_atrasados",
-      );
-
-      $page = 1;
-      $limit = 12;
-      $limite = array();
-      if (!isset($_GET['page'])) {
-        $limite=array($limit,$page-1);
-      }else{
-        $page = $_GET['page']-1;
-        $paginado = $limit*$page;
-        $limite=array($limit,$paginado);
-      }
-
-      $datos['pedidos'] = $this->pedidos_model->getOrders($parametros,$page,$limite);
-      
-      $param = array();
-      $page_prod = 1;
-      $limit = 12;
-      $limite = array();
-      if (!isset($_GET['page_prod'])) {
-        $limite=array($limit,$page_prod-1);
-      }else{
-        $page_prod = $_GET['page_prod']-1;
-        $paginado = $limit*$page_prod;
-        $limite=array($limit,$paginado);
-      }
-      $datos['productos_agotados'] = $this->productos_model->getAgotados($param,$page_prod,$limite);
       
       $this->load->view('normal_view', $datos);
       

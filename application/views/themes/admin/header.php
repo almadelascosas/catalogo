@@ -12,16 +12,18 @@
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/general-style.css?<?=rand()?>">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
     <!-- END GLOBAL MANDATORY STYLES -->
     <link loading="lazy" rel="stylesheet" href="assets/css/toastr.min.css">
 
     <?php
     //If CSS Data exists, load files
-    if(isset($css_data)){
-        foreach($css_data AS $css_file) echo '<link href="'.$css_file.'" rel="stylesheet">';
-    }
-    if(isset($map_js)){ ?> <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrAPV7f9BNJu-WKXlfcsFRQOJGShZ2eQI&callback=initMap"></script> <?php } ?>
+    if(isset($css_data)) foreach($css_data AS $css_file) echo '<link href="'.$css_file.'" rel="stylesheet">';
+    
+    if(isset($map_js)){ 
+    ?> 
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrAPV7f9BNJu-WKXlfcsFRQOJGShZ2eQI&callback=initMap"></script> 
+    <?php } ?>
     <script language="javascript">
         var base_url = "<?=base_url();?>";
     </script>
