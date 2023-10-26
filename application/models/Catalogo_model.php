@@ -14,6 +14,24 @@ class Catalogo_model extends CI_Model {
                         ->result_array();
     }
 
+    public function single($id){
+        return $this->db->where('catalogo_id', $id)->get($this->getTable())->result_array()[0];
+    }
+
+    public function add($data){
+        $this->db->insert($this->getTable(), $data);
+        return $this->db->insert_id();
+    }
+
+    public function update($id, $data){
+        $this->db->where('catalogo_id', $id)
+                 ->update($this->getTable(), $data);
+    }
+
+
+
+
+
     public function getOrders($parametros = array(),$page = 1,$limite=array()){
         if (isset($parametros['tipo_consulta']) && $parametros['tipo_consulta']=="pedidos_atrasados") {
             $pedidos_ids = array(0);
@@ -618,58 +636,6 @@ class Catalogo_model extends CI_Model {
 
     }
 
-    public function single($id){
-        $ids_productos = array();
-        $query = $this->db->query('SHOW COLUMNS FROM pedidos');
-        $valores = $query->result_array();
-        $this->db->select('*,
-        (SELECT departamento FROM departamentos WHERE departamentos.id_departamento=pedidos.pedidos_departamento_envio) as departamento_envio,
-        (SELECT municipio FROM municipios WHERE municipios.id_municipio=pedidos.pedidos_localidad_envio) as municipio_envio')
-        ->where("pedidos_id",$id);
-        $this->db->join('departamentos','departamentos.id_departamento=pedidos.pedidos_departamento','left');
-        $this->db->join('municipios','municipios.id_municipio=pedidos.pedidos_localidad','left');
-        $query = $this->db->get('pedidos');
-        $data = array();
-        $data['pedido'] = array();
-        $data['productos'] = array(0);
-        foreach ($query->result_array() as $key2 => $value2) {
-            foreach ($valores as $key => $value) {
-                $data['pedido'] += [$value["Field"]=>$value2[$value["Field"]]];
-            }
-            $data['pedido'] += ["municipio"=>$value2['municipio']];
-            $data['pedido'] += ["departamento"=>$value2['departamento']];
-            $data['pedido'] += ["municipio_envio"=>$value2['municipio_envio']];
-            $data['pedido'] += ["departamento_envio"=>$value2['departamento_envio']];
-            $ids_productos = explode(",",$value2['pedidos_productos']);
-        }
-        $this->db->select('*')->join("medios","medios.medios_id=productos.productos_imagen_destacada","left")->where_in("productos_id",$ids_productos);
-        $data['productos'] = $this->db->get('productos');
-
-        $this->db->select('*')->where("pedidos_id",$id);
-        $data['estatus'] = $this->db->get('pedidos_estatus_productos');
-
-        $this->db->select('*');
-        $this->db->where('pedidos_productos_pedido_id', $id);
-        $data['pedidos_productos'] = $this->db->get('pedidos_productos');
-        
-        $id_addons = array();
-        foreach ($data['pedidos_productos']->result_array() as $key => $value) {
-            $addons = explode("],[",$value['pedidos_productos_addons']);
-            for ($i=0; $i < count($addons); $i++) {
-                $childs = explode("/,/",$addons[$i]);
-                array_push($id_addons, $childs[0]);
-            }
-        }
-        
-        $this->db->select('*');
-        if ($id_addons!=array()) {
-            $this->db->where_in('addons_id', $id_addons);
-        }
-        $data['addons'] = $this->db->get('addons_productos');
-        return $data;
-
-    }
-
     public function notas_internas($id=0){
         
         $data = array();
@@ -818,19 +784,7 @@ class Catalogo_model extends CI_Model {
         }
         return $data;
     }
-    public function add(){
-        $query = $this->db->query('SHOW COLUMNS FROM productos');
-        $valores = $query->result_array();
-        $data = array();
-        foreach ($valores as $key => $value) {
-        $field = $value["Field"];
-        if ($value["Field"]!="productos_id" and $this->input->post($value["Field"])!=NULL) {
-            $data += [$value["Field"]=>$this->input->post($value["Field"])];
-        }
-        }
-        $ingresar['data'] = $this->db->insert('productos', $data);
-        return $ingresar;
-    }
+
     function save(){
 
         $query = $this->db->query('SHOW COLUMNS FROM pedidos');

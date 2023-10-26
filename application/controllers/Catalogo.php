@@ -9,6 +9,7 @@ class Catalogo extends MY_LoggedController
         parent::__construct('catalogo');
         $this->load->helper(array('commun'));
         $this->load->model("catalogo_model", "mdCata");
+        $this->load->library('upload');
     }
 
     public function index()
@@ -22,35 +23,100 @@ class Catalogo extends MY_LoggedController
       
     }
 
-    public function notificarPedidoRetrasado(){
+    public function agregar()
+    {
+      $datos = [
+        'view' => 'catalogo/add_edit',
+        'action' => 'catalogo/add'
+      ];
       
-      if (isset($_POST['pedidos_id'])) {
-        $pedido = $this->pedidos_model->singleNew($_POST['pedidos_id']);
-        $receptores = array();
-        foreach ($pedido['productos']->result_array() as $key => $value) {
-          array_push($receptores,array(
-            "correo" => $value['email'],
-            "nombre" => $value['name'],
-          ));
-        }
-        /*
-        array_push($receptores,array(
-          "correo" => "softmenaca@gmail.com",
-          "nombre" => "Softmena",
-        ));
-        array_push($receptores,array(
-          "correo" => "felipe.alamdelascosas@gmail.com",
-          "nombre" => "Felipe",
-        ));
-        */
+      $this->load->view('normal_view', $datos);
+    }
 
-        $enviarMail = $this->mailing_model->pedidoRetrasado($pedido,$receptores);
+    public function add(){
+      $data=[
+        'catalogo_admin' => $_SESSION['usuarios_id'],
+        'catalogo_nombre' => $this->input->post('txtNom'),
+        'catalogo_descripcion' => $this->input->post('txtDes'),
+        'catalogo_fecha_inicio' => $this->input->post('txtIni'),
+        'catalogo_fecha_final' => $this->input->post('txtFin')
+      ];
+      $id = $this->mdCata->add($data);
+      $msjFile='';
 
-        echo json_encode($enviarMail);
-
+      $rutaElemento='assets/uploads/catalogo/'.$id.'.pdf';
+      if (move_uploaded_file($_FILES["filCat"]["tmp_name"], $rutaElemento)) {
+        $msjFile='<br>* Carga de archivo exitoso';
       }
 
+      if(isset($_FILES["filCat"]) && $_FILES["filPor"]!==''){
+        $rutaImagen='assets/uploads/catalogo/'.$id.'.png';
+        if (move_uploaded_file($_FILES["filPor"]["tmp_name"], $rutaImagen)) {
+          $msjFile.='<br>* Carga de archivo imagen';
+        }
+      }
+
+      $this->session->set_flashdata('success', '!Excelente, se ha creado el registro'.$msjFile);
+      redirect(base_url('catalogo'), $datos);
     }
+
+
+
+    public function editar($id, $nombre)
+    {
+      $datos = [
+        'view' => 'catalogo/add_edit',
+        'datoCatalogo' => $this->mdCata->single($id),
+        'action' => 'catalogo/update/'.$id
+      ];
+      
+      $this->load->view('normal_view', $datos);
+    }
+
+    public function update($id){
+      $data=[
+        'catalogo_nombre' => $this->input->post('txtNom'),
+        'catalogo_descripcion' => $this->input->post('txtDes'),
+        'catalogo_fecha_inicio' => $this->input->post('txtIni'),
+        'catalogo_fecha_final' => $this->input->post('txtFin')
+      ];
+      $this->mdCata->update($id, $data);
+
+      $msjFile='';
+      if(isset($_FILES["filCat"]) && $_FILES["filCat"]!==''){
+        $rutaElemento='assets/uploads/catalogo/'.$id.'.pdf';
+        if (move_uploaded_file($_FILES["filCat"]["tmp_name"], $rutaElemento)) {
+          $msjFile='<br>* Carga de archivo exitoso';
+        }
+      }
+
+      if(isset($_FILES["filPor"]) && $_FILES["filPor"]!==''){
+        $rutaImagen='assets/uploads/catalogo/'.$id.'.png';
+        if (move_uploaded_file($_FILES["filPor"]["tmp_name"], $rutaImagen)) {
+          $msjFile.='<br>* Carga de archivo imagen';
+        }
+      }
+      
+
+      $this->session->set_flashdata('success', '!Excelente, se ha modificado el registro'.$msjFile);
+      redirect(base_url('catalogo'), $datos);
+    }
+
+    public function descargar($id, $nombre){
+      $rutaArchivo = "assets/uploads/catalogo/".$id.".pdf";
+      if(file_exists($rutaArchivo)){
+        $nombreArchivo = basename($nombre.'.pdf');
+        # Algunos encabezados que son justamente los que fuerzan la descarga
+        header('Content-Type: application/octet-stream');
+        header("Content-Transfer-Encoding: Binary");
+        header("Content-disposition: attachment; filename=$nombreArchivo");
+        # Leer el archivo y sacarlo al navegador
+        readfile($rutaArchivo);
+      }     
+      
+    }
+
+
 
 
 
