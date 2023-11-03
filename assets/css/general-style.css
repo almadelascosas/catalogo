@@ -1047,7 +1047,7 @@ div[class*=" fa-"], div[class*=" fa-"]:before, div[class*=fa-], div[class^=fa-]:
 .content{
     position: relative;
     float: right;
-    width: 81%;
+    width: 94%;
     display: block;
 }
 
@@ -1693,3 +1693,57 @@ a.btn-mostrar-vendedor {
 
 /* /TABLA PEDIDOS DASHBOARD */
 
+@media (max-width:768px){
+  .content{
+    position: relative;
+    float: right;
+    width: 100%;
+    display: block;
+  }
+
+  .menu_mobile {
+    width: 100%;
+    flex: 1 auto;
+    border-right: #ccc 0 solid;
+    background: white;
+    box-shadow: 0 0 25px rgb(0 0 0 / 27%);
+    
+    z-index: 11;
+    transition: all 1s;
+    position:fixed;
+    left:0px;
+    top:0px;
+    height:70px;
+    padding-bottom: 0px;
+    overflow: hidden;
+  }
+  .wcfm_menu_logo_mobil{
+    background: #F5B228;
+    text-align: center;
+    height: 70px;
+    margin-right: 15px;
+  }
+  .wcfm_menu_logo_mobil a img{
+    /*width: 95%;*/
+    height: 70%;
+    position: relative;
+    margin: 8px 9px;
+
+  }
+  .div-menu_mobil{
+    text-align: center;
+
+  }
+  .div-menu_mobil a i{
+    position: relative;
+    margin: 6px auto;
+    padding: 10px 0;
+    color:  #494949;
+  }
+  .div-menu_mobil a svg{
+    position: relative;
+    margin: 0 auto;
+    color:  #494949;
+    margin-top: 16px;
+  }
+}

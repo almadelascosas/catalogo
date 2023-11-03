@@ -15,6 +15,77 @@ class Productos extends MY_LoggedController
         $this->load->model("municipios_model");
     }
 
+    public function index()
+    {
+      $filtros_user = [];
+      $filtros_user['where'] = array("tipo_accesos", [1,8]);
+      $page_user = 1;
+      $limite_user = [500,0];
+      $vendedores=[];
+
+      $resp = $this->usuarios_model->getAll($filtros_user, $page_user, $limite_user);
+      foreach($resp->result_array() as $data) $vendedores[] = $data;
+
+      $datos = [
+        'view' => "productos/index",
+        'css_data' => [],
+        'js_data' => [
+            'assets/js/pages/productos/index.js?'.rand(),
+          ],
+        'vendedores' => $vendedores,
+        'productos' => [],
+        'categorias' => []
+
+      ];
+
+      $filtros = array();
+
+
+      if (intval($_SESSION['tipo_accesos'])!==0 && intval($_SESSION['tipo_accesos'])!==1) $filtros['where_arr']['usuarios_id']=$_SESSION['usuarios_id'];
+
+      $page = 1;
+      $limit = 12;
+      $limite = array();
+      if (!isset($_GET['page'])) {
+        $limite=array($limit,$page-1);
+      }else{
+        $page = $_GET['page']-1;
+        $paginado = $limit*$page;
+        $limite=array($limit,$paginado);
+      }
+
+      if(isset($_SESSION['filtros'])){
+        $filtros = $_SESSION['filtros'];
+      }else{
+        $filtros['orderby'] = array();
+        $filtros['orderby'][0] = "productos_fecha_creacion";
+        $filtros['orderby'][1] = "DESC";
+      }       
+
+      $datos['productos'] = $this->productos_model->getAll($filtros,$page,$limite);      
+
+      $categorias = array();
+
+      foreach ($datos['productos']->result_array() as $key => $value) {
+        $cat = explode("/,/",$value['productos_categorias']);
+        for ($i=0; $i < count($cat); $i++) {
+          if (isset($cat[$i]) && $cat[$i]!="" && $cat[$i]!=0) {
+            array_push($categorias, $cat[$i]);
+          }
+        }
+      }
+
+      $this->db->select("*");
+      if ($categorias!=array()){
+        $this->db->where_in("categorias_id",$categorias);
+      }else{
+        $this->db->where_in("categorias_id",0);
+      }
+      $datos['categorias'] = $this->db->get("categorias");
+
+      $this->load->view('normal_view', $datos);
+    }
+
     public function generadorSlug(){
 
       $this->db->select("productos_id,productos_titulo,productos_fecha_creacion");
@@ -61,85 +132,7 @@ class Productos extends MY_LoggedController
       redirect(base_url('productos'));
     }
 
-    public function index()
-    {
-      $filtros_user = [];
-      $filtros_user['where'] = array("tipo_accesos", [1,8]);
-      $page_user = 1;
-      $limite_user = [500,0];
-      $vendedores=[];
-
-      $resp = $this->usuarios_model->getAll($filtros_user, $page_user, $limite_user);
-      foreach($resp->result_array() as $data) $vendedores[] = $data;
-
-      $datos = [
-        'view' => "productos/index",
-        'css_data' => [],
-        'js_data' => [
-            'assets/js/pages/productos/index.js?'.rand(),
-          ],
-        'vendedores' => $vendedores,
-        'productos' => [],
-        'categorias' => []
-
-      ];
-
-      $filtros = array();
-
-      /*
-      if (intval($_SESSION['tipo_accesos'])!==0 && intval($_SESSION['tipo_accesos'])!==1){
-        if(intval($_SESSION['tipo_accesos'])===8){
-          $filtros['where_arr']['usuarios_id']=1;
-        }else{
-          $filtros['where_arr']['usuarios_id']=$_SESSION['usuarios_id'];
-        }
-      }
-      */
-
-      if (intval($_SESSION['tipo_accesos'])!==0 && intval($_SESSION['tipo_accesos'])!==1) $filtros['where_arr']['usuarios_id']=$_SESSION['usuarios_id'];
-
-      $page = 1;
-      $limit = 12;
-      $limite = array();
-      if (!isset($_GET['page'])) {
-        $limite=array($limit,$page-1);
-      }else{
-        $page = $_GET['page']-1;
-        $paginado = $limit*$page;
-        $limite=array($limit,$paginado);
-      }
-
-      if(isset($_SESSION['filtros'])){
-        $filtros = $_SESSION['filtros'];
-      }else{
-        $filtros['orderby'] = array();
-        $filtros['orderby'][0] = "productos_fecha_creacion";
-        $filtros['orderby'][1] = "DESC";
-      }       
-
-      $datos['productos'] = $this->productos_model->getAll($filtros,$page,$limite);      
-
-      $categorias = array();
-
-      foreach ($datos['productos']->result_array() as $key => $value) {
-        $cat = explode("/,/",$value['productos_categorias']);
-        for ($i=0; $i < count($cat); $i++) {
-          if (isset($cat[$i]) && $cat[$i]!="" && $cat[$i]!=0) {
-            array_push($categorias, $cat[$i]);
-          }
-        }
-      }
-
-      $this->db->select("*");
-      if ($categorias!=array()){
-        $this->db->where_in("categorias_id",$categorias);
-      }else{
-        $this->db->where_in("categorias_id",0);
-      }
-      $datos['categorias'] = $this->db->get("categorias");
-
-      $this->load->view('normal_view', $datos);
-    }
+    
 
     public function descuentoProd(){
       if (isset($_SESSION['usuarios_id']) && $_SESSION['usuarios_id']==9) {
